@@ -16,9 +16,21 @@ const enableMocking = () =>
 async function render() {
   const $root = document.querySelector("#root");
 
-  $root.innerHTML = HomePage({ loading: true });
-  const data = await getProducts();
-  $root.innerHTML = HomePage({ loading: false, products: data.products });
+  $root.innerHTML = HomePage({ loading: true, error: null, products: [] }); // loading
+  try {
+    const data = await getProducts();
+    $root.innerHTML = HomePage({ loading: false, error: null, products: data.products }); // 성공
+  } catch (error) {
+    $root.innerHTML = HomePage({ loading: false, error: error, products: [] }); // 실패
+  }
+  setupRetryButton();
+}
+// 재시도 버튼 제공
+function setupRetryButton() {
+  const retryBtn = document.querySelector("#retry-btn");
+  retryBtn.addEventListener("click", () => {
+    render();
+  });
 }
 
 function main() {

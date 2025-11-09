@@ -1,10 +1,11 @@
 // TODO: 로딩상태 추가
 
+import ErrorState from "../common/ErrorState";
 import LoadingSpinner from "../common/LoadingSpinner";
 import ProductCardSkeleton from "../common/ProductCardSkeleton";
 import ProductCard from "./ProductCard";
 
-export default function ProductList({ loading, products }) {
+export default function ProductList({ loading, error, products }) {
   if (loading) {
     return /*html*/ `
       <div class="mb-6">
@@ -14,6 +15,15 @@ export default function ProductList({ loading, products }) {
             .join("")}
         </div>
         ${LoadingSpinner({ message: "상품을 불러오는 중..." })}
+      </div>
+    `;
+  }
+  if (error) {
+    return /*html*/ `
+      <div class="mb-6">
+        ${ErrorState({
+          description: error.message || "네트워크 연결을 확인하거나 잠시 후 다시 시도해주세요.",
+        })}
       </div>
     `;
   }
