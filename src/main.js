@@ -16,11 +16,9 @@ const enableMocking = () =>
 async function render() {
   const $root = document.querySelector("#root");
 
-  if (location.pathname === "/") {
-    $root.innerHTML = HomePage({ loading: true });
-    const data = await getProducts();
-    $root.innerHTML = HomePage({ loading: false, products: data.products });
-  }
+  $root.innerHTML = HomePage({ loading: true });
+  const data = await getProducts();
+  $root.innerHTML = HomePage({ loading: false, products: data.products });
 }
 
 function main() {
