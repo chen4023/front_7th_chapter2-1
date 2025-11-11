@@ -1,6 +1,8 @@
 // TODO: 로딩상태 추가
 
-export default function ProductFilter({ loading, categories, selectedCategory1, category2List }) {
+import Breadcrumb from "../common/Breadcrumb";
+
+export default function ProductFilter({ loading, categories, selectedCategory1, selectedCategory2, category2List }) {
   const renderCategories = () => {
     if (loading) {
       return /*html*/ `
@@ -77,7 +79,7 @@ export default function ProductFilter({ loading, categories, selectedCategory1, 
         <div class="space-y-2">
           <div class="flex items-center gap-2">
             <label class="text-sm text-gray-600">카테고리:</label>
-            <button data-breadcrumb="reset" class="text-xs hover:text-blue-800 hover:underline">전체</button>
+            ${Breadcrumb({ selectedCategory1, selectedCategory2 })}
           </div>
           <!-- 1depth 카테고리 -->
           ${

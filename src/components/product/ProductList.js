@@ -25,11 +25,12 @@ export default function ProductList({ loading, error, products }) {
       </div>
     `;
   }
+  // TODO: 무한스크롤 적용 후에 테스트 개수 오류 반영
   return /*html*/ `
     <div class="mb-6">
       <div>
         <div class="mb-4 text-sm text-gray-600">
-          총 <span class="font-medium text-gray-900">${products.length}</span>의 상품
+          총 <span class="font-medium text-gray-900">${products.length}</span>개의 상품
         </div>
         <!-- 상품 그리드 -->
         <div class="grid grid-cols-2 gap-4 mb-6" id="products-grid">

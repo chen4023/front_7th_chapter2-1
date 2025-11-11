@@ -31,6 +31,7 @@ async function render() {
     products: [],
     categories,
     selectedCategory1: params.category1,
+    selectedCategory2: params.category2,
     category2List,
   }); // loading
   try {
@@ -41,6 +42,7 @@ async function render() {
       products: data.products,
       categories,
       selectedCategory1: params.category1,
+      selectedCategory2: params.category2,
       category2List,
     }); // 성공
 
@@ -52,6 +54,7 @@ async function render() {
       products: [],
       categories,
       selectedCategory1: params.category1,
+      selectedCategory2: params.category2,
       category2List,
     }); // 실패
     setupRetryButton();
