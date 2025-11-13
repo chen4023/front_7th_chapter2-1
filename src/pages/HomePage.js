@@ -10,10 +10,14 @@ export default function HomePage({
   selectedCategory1,
   selectedCategory2,
   category2List,
+  totalCount,
+  isInfiniteScrolling,
+  hasMore,
+  cartCount = 0,
 }) {
   const content = /*html*/ `
     ${ProductFilter({ loading, categories, selectedCategory1, selectedCategory2, category2List })}
-    ${ProductList({ loading, error, products })}
+    ${ProductList({ loading, error, products, totalCount, isInfiniteScrolling, hasMore })}
   `;
-  return Layout({ children: content });
+  return Layout({ children: content, cartCount });
 }
